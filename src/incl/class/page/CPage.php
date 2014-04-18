@@ -100,7 +100,7 @@ class CPage
 
   public function messageOfTheDay($username = "") 
   { 
-    return "Master $username, I am here to serve you!"; 
+    return "Select an option on the lefthand menu.";
   }
 
   public function getLanguageAbbreviation() { return $this->m_language->getLanguageAbbreviation(); }

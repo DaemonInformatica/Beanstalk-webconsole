@@ -27,11 +27,11 @@ array_push($sql, "CREATE TABLE tblWorkerStatus(id INT PRIMARY KEY AUTO_INCREMENT
 
 /******* tblUser: ***************/
 
-$name       = "Martin Stam";
-$username   = "martin";
+$name       = "System Admin";
+$username   = "admin";
 $salt       = $page->getMD5Salt();
-$passwd     = md5($salt."passwd");
-$email      = "martin.stam@gmail.com";
+$passwd     = md5($salt."mypassword");
+$email      = "admin@email.com";
 $state      = "active";
 $languageID = 1;
 $userGroup  = "administrator";
@@ -88,6 +88,11 @@ $description  = "Language administration";
 array_push($entry, "INSERT INTO tblAccessElements VALUES(0, '$name', '$description', 1, '$created', '', $createdBy, 0);");
 
 
+$name         = "page-mymd5";
+$description  = "Show My MD5 page.";
+
+array_push($entry, "INSERT INTO tblAccessElements VALUES(0, '$name', '$description', 1, '$created', '', $createdBy, 0);");
+
 /******* tblUserToAccess: ***************/
 /*
 tblUserToAccess
@@ -110,6 +115,10 @@ $accessID = 2;
 array_push($entry, "INSERT INTO tblUserToAccess VALUES(0, $userID, $accessID, '$created', '', $createdBy, 0);");
 
 $accessID = 3;
+
+array_push($entry, "INSERT INTO tblUserToAccess VALUES(0, $userID, $accessID, '$created', '', $createdBy, 0);");
+
+$accessID = 4;
 
 array_push($entry, "INSERT INTO tblUserToAccess VALUES(0, $userID, $accessID, '$created', '', $createdBy, 0);");
 

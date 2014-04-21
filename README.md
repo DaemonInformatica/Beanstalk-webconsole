@@ -45,3 +45,11 @@ The manager will now automatically pickup the new hash as a hash to crack.
 Existing hashes will have the option to show details. The details screen currently shows the hash, the decoded value if 
 one is available, date and time created and the time spent on the project so far. Also a list of ranges pushed to the 
 beanstalk so far and their state / status. 
+
+
+TODO: 
+- Make it look prettier. 
+- Extend the new MD5 interface to give a starting point. 
+- Debug time spent in the details interface. it stays on '0'. 
+- Implement overview of worker status. 
+- Maybe play around with a way to offer 'time for time'. This is mainly useful when the service is going to get a fair-use policy.. 

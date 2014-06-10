@@ -16,7 +16,7 @@ array_push($sql, "CREATE TABLE tblUserToAccess(id INT PRIMARY KEY AUTO_INCREMENT
 array_push($sql, "CREATE TABLE tblLogbook(id INT PRIMARY KEY AUTO_INCREMENT, IP TEXT, description TEXT, type INT, website TEXT, created DATETIME, updated DATETIME, createdBy INT, updatedBy INT);");
 array_push($sql, "CREATE TABLE tblLanguage(id INT PRIMARY KEY AUTO_INCREMENT, name TEXT, description TEXT, active INT, abbreviation TEXT, created DATETIME, updated DATETIME, createdBy INT, updatedBy INT);");
 array_push($sql, "CREATE TABLE tblLanguageLine(id INT PRIMARY KEY AUTO_INCREMENT, languageID INT, fieldname TEXT, value TEXT, active INT, created DATETIME, updated DATETIME, createdBy INT, updatedBy INT);");
-array_push($sql, "CREATE TABLE tblMD5(id INT PRIMARY KEY AUTO_INCREMENT, md5string VARCHAR(32), md5decoded VARCHAR(40), created DATETIME, updated DATETIME, createdBy INT, updatedBy INT);");
+array_push($sql, "CREATE TABLE tblMD5(id INT PRIMARY KEY AUTO_INCREMENT, md5string VARCHAR(32), start VARCHAR(40), md5decoded VARCHAR(40), created DATETIME, updated DATETIME, createdBy INT, updatedBy INT);");
 array_push($sql, "CREATE TABLE tblMD5Process(id INT PRIMARY KEY AUTO_INCREMENT, md5ID INT, status ENUM('waiting', 'processing', 'completed'), strStart VARCHAR(40), strEnd VARCHAR(40), tsStart BIGINT, tsEnd BIGINT, tubeName VARCHAR(32), created DATETIME, updated DATETIME, createdBy INT, updatedBy INT);");
 array_push($sql, "CREATE TABLE tblWorkerStatus(id INT PRIMARY KEY AUTO_INCREMENT, IP TEXT, hostname TEXT, lastReported DATETIME, created DATETIME, updated DATETIME, createdBy INT, updatedBy INT);");
 
@@ -135,25 +135,25 @@ switch($page->m_cid)
     break; // end of case 0
   case 1:
     print("Building tables: <br>");
-  
+
     for($i = 0; $i < count($sql); $i++)
     {
       print("Building table: $sql[$i]... ");
-      
+
       $qry = $env['dbConn']->prepare($sql[$i]);
-      
-      $qry->execute();      
+
+      $qry->execute();
       print("done.<br>");
     }
-    
+
     print("Done building tables.<br> executing entries:<br>");
-    
+
     for($i = 0; $i < count($entry); $i++)
     {
       print("Executing entry: $entry[$i]... ");
       // mysql_query($entry[$i], $env['dbConn']) or die("Error in entry $entry[$i]<br>");
       $qry = $env['dbConn']->prepare($entry[$i]);
-      
+
       $qry->execute();
       print("done.<br>");
     }

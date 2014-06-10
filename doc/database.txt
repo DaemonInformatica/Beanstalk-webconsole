@@ -117,13 +117,14 @@ SQL: CREATE TABLE tblLanguageLine(id INT PRIMARY KEY AUTO_INCREMENT, languageID 
 tblMD5
 - id          INT PRIMARY KEY AUTO_INCREMENT
 - md5string   VARCHAR(32)
+- start	      VARCHAR(40)
 - md5decoded  VARCHAR(40)
 - created     DATETIME
 - updated     DATETIME
 - createdBy   INT
 - updatedBy   INT
 
-SQL: CREATE TABLE tblMD5(id INT PRIMARY KEY AUTO_INCREMENT, md5string VARCHAR(32), md5decoded VARCHAR(40), created DATETIME, updated DATETIME, createdBy INT, updatedBy INT);
+SQL: CREATE TABLE tblMD5(id INT PRIMARY KEY AUTO_INCREMENT, md5string VARCHAR(32), start VARCHAR(40), md5decoded VARCHAR(40), created DATETIME, updated DATETIME, createdBy INT, updatedBy INT);
 
 
 tblMD5Process
